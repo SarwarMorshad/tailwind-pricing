@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Link from "./Link";
 import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 
 const navigation = [
   { name: "Home", url: "/", path: "/" },
@@ -21,7 +21,7 @@ const NavBar = () => {
           {/* Toggle button with icon cross-fade + rotate */}
           <button
             aria-label="Toggle menu"
-            onClick={() => setIsOpen((v) => !v)}
+            onClick={() => setIsOpen(!isOpen)}
             className={`relative md:hidden grid place-items-center w-8 h-8
               transition-transform duration-300 hover:scale-110 active:scale-95
               ${isOpen ? "rotate-90" : "rotate-0"}`}
@@ -67,7 +67,6 @@ const NavBar = () => {
           <h1>Navbar</h1>
         </div>
 
-        {/* Desktop list (Link returns <li>, so render directly) */}
         <ul className="md:flex hidden gap-4">
           {navigation.map((route) => (
             <Link key={route.name} route={route} />
